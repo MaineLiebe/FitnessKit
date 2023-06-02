@@ -46,10 +46,12 @@ class LessonsViewModel : ViewModel() {
             coaches[coach.id] = coach
         }
 
+
+
         response.lessons.forEach { lesson ->
             val startTime = convertTime(lesson.startTime, "HH:mm")
             val endTime = convertTime(lesson.endTime, "HH:mm")
-            val duration = convertTime((endTime - startTime),"Hч. mmмин.")
+            val duration = convertTime((endTime - startTime), "Hч. mmмин.")
             val uiLesson = UiLesson(
                 name = lesson.name,
                 startTime = lesson.startTime,
@@ -60,7 +62,9 @@ class LessonsViewModel : ViewModel() {
                 time = duration,
                 coachName = coaches[lesson.coachId]?.name ?: "неизвестно",
                 dateMills = convertTime(lesson.date, "yyyy-MM-dd"),
-                startTimeInMills = startTime
+                startTimeInMills = startTime,
+                description = lesson.description,
+                imageUrl = coaches[lesson.coachId]?.imageUrl ?: ""
             )
             lessons.add(uiLesson)
         }

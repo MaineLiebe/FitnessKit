@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitnesskit.R
 import com.example.fitnesskit.databinding.FragmentLessonsBinding
 import com.example.fitnesskit.model.Lesson
@@ -16,7 +17,9 @@ class LessonsFragment : Fragment() {
     private var _binding: FragmentLessonsBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = LessonsAdapter()
+    private val adapter = LessonsAdapter{
+        findNavController().navigate(LessonsFragmentDirections.openTraining(it))
+    }
 
     private val viewModel: LessonsViewModel by viewModels()
 

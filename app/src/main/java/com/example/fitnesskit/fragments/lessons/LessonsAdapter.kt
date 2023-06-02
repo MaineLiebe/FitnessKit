@@ -2,23 +2,28 @@ package com.example.fitnesskit.fragments.lessons
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fitnesskit.databinding.ItemDateBinding
 import com.example.fitnesskit.databinding.ItemLessonBinding
 import com.example.fitnesskit.model.ListItem
 import com.example.fitnesskit.model.TrainingDay
 import com.example.fitnesskit.model.UiLesson
+import java.lang.System.load
 
 class LessonsAdapter(
-
+private val onItemClick: (lesson: UiLesson) -> Unit
 ) : ListAdapter<ListItem, RecyclerView.ViewHolder>(LessonDiffUtil()) {
 
     class LessonsViewHolder(
         private val binding: ItemLessonBinding,
+        private val onItemClick: (lesson: UiLesson) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(lesson: UiLesson) {
+            binding.root.setOnClickListener { onItemClick(lesson) }
             binding.timeStart.text = lesson.startTime
             binding.timeEnd.text = lesson.endTime
             binding.classRoom.text = lesson.place
@@ -54,7 +59,7 @@ class LessonsAdapter(
             }
             TYPE_TRAINING -> {
                 val binding = ItemLessonBinding.inflate(inflater, parent, false)
-                LessonsViewHolder(binding)
+                LessonsViewHolder(binding, onItemClick)
             }
             else -> {
                 throw Exception()

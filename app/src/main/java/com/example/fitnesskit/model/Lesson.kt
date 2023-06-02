@@ -10,5 +10,6 @@ data class Lesson(
     @SerializedName("coach_id")
     val coachId: String,
     val color: String,
-    val date: String
+    val date: String,
+    val description: String,
 )

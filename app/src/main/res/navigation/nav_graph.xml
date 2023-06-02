@@ -9,5 +9,17 @@
         android:id="@+id/lessonsFragment"
         android:name="com.example.fitnesskit.fragments.lessons.LessonsFragment"
         android:label="fragment_lessons"
-        tools:layout="@layout/fragment_lessons" />
+        tools:layout="@layout/fragment_lessons" >
+        <action
+            android:id="@+id/open_training"
+            app:destination="@id/trainingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.example.fitnesskit.fragments.training.TrainingFragment"
+        android:label="TrainingFragment" >
+        <argument
+            android:name="training"
+            app:argType="com.example.fitnesskit.model.UiLesson" />
+    </fragment>
 </navigation>
