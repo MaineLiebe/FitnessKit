@@ -11,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnesskit.R
 import com.example.fitnesskit.databinding.FragmentLessonsBinding
 import com.example.fitnesskit.model.Lesson
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LessonsFragment : Fragment() {
 
     private var _binding: FragmentLessonsBinding? = null
